@@ -36,7 +36,7 @@ localStorage.setItem(storeScore,"null");
 
 
 
-const gameReset=(barName)=>{
+function gameReset(barName){
 
     bar1.style.left=((window.innerWidth-bar1.offsetWidth)/2)+"px";
     bar2.style.left=((window.innerWidth-bar2.offsetWidth)/2)+"px";
@@ -60,7 +60,7 @@ const gameReset=(barName)=>{
 
 
 
-document.addEventListener('keydown',(event)=>{
+document.addEventListener('keydown',function(event){
 
     if(event.keyCode==68 || event.keyCode==39){
         if(parseInt(bar1.style.left)<(window.innerWidth-bar1.offsetWidth-border)){
@@ -72,8 +72,8 @@ document.addEventListener('keydown',(event)=>{
 
     if(event.keyCode==65 || event.keyCode==37){
         
-        if(parseInt(bar1.style.left)<(window.innerWidth-bar1.offsetWidth-border)){
-            bar1.style.left=parseInt(bar1.style.left)+movement+'px';
+        if(parseInt(bar1.style.left)>border){
+            bar1.style.left=parseInt(bar1.style.left)-movement+'px';
             bar2.style.left=bar1.style.left;
         };
 
@@ -131,7 +131,7 @@ document.addEventListener('keydown',(event)=>{
     }
 });
 
-const dataStoring=(scoreObtained,winningBar)=>{
+function dataStoring(scoreObtained,winningBar){
     if(score>highScore){
         highScore=score;
         localStorage.setItem(storeName,winningBar);
